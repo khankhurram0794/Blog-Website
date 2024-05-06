@@ -1,0 +1,117 @@
+*
+{
+    margin: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+.login
+{
+    height: 100vh;
+    background-image: url(../images/dc-the-batman-4k-tv.jpg);
+    background-size: 100%;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login_form
+{
+    
+    border: 5px solid rgb(182, 200, 255);
+    width: 20%;
+    height: 55%;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 10px 5px 10px rgb(194, 209, 255);
+    opacity:0.7;
+    transition-property: scale,opacity;
+    transition-duration: 1s; 
+}
+.login_form:hover
+{
+    opacity:1;
+    scale: 1.2  ;
+}
+.heading
+{
+    padding: 15px;
+    margin: 20px;
+    font-size: 2rem;
+    font-weight:bold;
+    color:beige;
+    font-variant: small-caps;
+}
+
+label>i 
+{
+
+    font-family: 'Times New Roman', Times, serif;
+    color: aliceblue;
+    font-size: 1.5rem;
+}
+input
+{
+
+    border-radius: 10px;
+    padding: 10px;
+    width: 65%;
+    background-color:rgb(231, 229, 242);
+    margin-top: 5px;
+    margin-bottom: 5px;
+    transition-property: width;
+    transition-duration: 1s;
+}
+
+input:focus
+{
+
+    width: 80%;
+}
+button
+{
+    font-variant: small-caps;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif; 
+    margin: 15px;
+    padding: 5px;
+    font-size: 20px;
+    color: aliceblue;
+    background-color: lightblue;
+    width: 120px;
+    height: 40px;
+    border-radius: 20px;
+    transition-property: scale;
+    transition-duration: 0.5s;
+}
+
+button:hover
+{
+    scale: 1.1;   
+}
+button:active
+{
+    background-color: lightskyblue;
+}
+
+a
+{
+    font-size: 1rem;
+    color:whitesmoke;
+    text-decoration: none;
+    padding: 5px;
+    margin: 5px;
+    transition-property: scale;
+    transition-duration: 0.5s;
+}
+
+a:hover
+{
+    scale: 1.1;
+}
+a:active
+{
+
+    color:lightseagreen;
+}

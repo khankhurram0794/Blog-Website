@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../CSS/login.css">
+    <style>
+        /* Style for the popup form */
+    .popup-form {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(red 60%, white 40%);
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    }
+    </style>
+    <title>Login Page</title>
+</head>
+<body>
+    <menu class="login">
+        <section class="login_form">
+            <span class="heading">Login Page</span>
+
+            <div class="login-id">
+                <label for="loginId">Id:</label>
+                <input type="text" id="loginId" name="loginUsername"><br><br>
+            </div>
+
+            <div class="login-id">
+                <label for="loginUsername">Username:</label>
+                <input type="text" id="loginUsername" name="loginUsername"><br><br>
+            </div>
+
+            <div class="pass">
+                <label for=""><i class="fa-solid fa-key"></i></label> &ThinSpace;
+                <input type="password" id="loginPassword" placeholder="Enter Password">
+            </div>
+            <button onClick="login()"> <!-- Added onclick event -->
+                <i class="fa-solid fa-right-to-bracket"></i>
+                &ThickSpace; Login
+            </button>
+
+            <a href="#" class="forgot">Forget Password?</a>
+            
+            <!-- Link to trigger the popup form -->
+            <a href="#" class="create" onclick="showPopup()">Don't Have An Account? Create One</a>
+        </section>
+    </menu>
+
+    <!-- Popup form -->
+<div id="popupForm" class="popup-form">
+    <h2>Create Account</h2>
+    <label for="userId">User ID:</label>
+    <input type="text" id="userId" name="userId"><br><br>
+    <label for="newUsername">Username:</label>
+    <input type="text" id="newUsername" name="newUsername"><br><br>
+    <label for="newPassword">Password:</label>
+    <input type="password" id="newPassword" name="newPassword"><br><br>
+    <button type="button" onclick="createAccount()">Create</button>
+    <button type="button" onclick="hidePopup()">Cancel</button>
+</div>
+
+<script>
+    // Function to show the popup form
+    function showPopup() {
+        document.getElementById("popupForm").style.display = "block";
+    }
+
+    // Function to hide the popup form
+    function hidePopup() {
+        document.getElementById("popupForm").style.display = "none";
+    }
+
+    // Function to create an account
+    function createAccount() {
+        var newUsername = document.getElementById("newUsername").value;
+        var newPassword = document.getElementById("newPassword").value;
+
+        // Check if user already exists in localStorage
+        if (localStorage.getItem(userId) !== null) {
+            alert("User already registered. Please sign up with a different User ID.");
+            return;
+        }
+
+        // Store user credentials in localStorage
+        localStorage.setItem(userId, JSON.stringify({ username: newUsername, password: newPassword }));
+        alert("Account created successfully!");
+        hidePopup(); // Hide the popup after account creation
+    }
+
+    function login() {
+    var userid = document.getElementById("loginId").value
+    console.log(userid)
+    var loginUsername = document.getElementById("loginUsername").value;
+    console.log(loginUsername)
+    var loginPassword = document.getElementById("loginPassword").value;
+
+    // Check if user exists in localStorage and password matches
+    var userDataStr = localStorage.getItem(userid);
+    console.log(userDataStr)
+    if (userDataStr !== null) {
+        try {
+            var userData = JSON.parse(userDataStr);
+            console.log(userData); // Log userData for debugging
+            if (userData.username === loginUsername) {
+                alert("Login successful! Redirecting to main blog page...");
+                // Redirect to the main blog page or perform further actions
+                // Replace "main_blog_page.html" with the actual URL of your main blog page
+                window.location.href = "blog.html";
+            } else {
+                alert("Invalid password. Please try again.");
+            }
+        } catch (error) {
+            console.error("Error parsing user data:", error);
+            alert("An error occurred while processing your login. Please try again later.");
+        }
+    } else {
+        alert("User does not exist. Please register first.");
+    }
+}
+
+</script>
+</body>
+</html>
